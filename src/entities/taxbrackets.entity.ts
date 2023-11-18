@@ -8,8 +8,8 @@ export class TaxBracket {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ unique: true, nullable: false })
-  name: string;
+  @Column({nullable: false })
+  incomeRange: string;
 
   @Column({ type: 'decimal', nullable: false })
   rate: number;
