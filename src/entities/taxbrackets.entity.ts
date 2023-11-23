@@ -1,5 +1,3 @@
-// src/taxbrackets/taxbrackets.entity.ts
-
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 import { UserTaxData } from '../entities/usertax-data.entity';
 

@@ -19,5 +19,4 @@ export class TaxBracketService {
     const newTaxBracket: TaxBracket = this.taxBracketRepository.create(taxBracketDto);
     return this.taxBracketRepository.save(newTaxBracket);
   }
-
 }

@@ -1,6 +1,4 @@
-// src/taxbrackets/dto/tax-bracket.dto.ts
-
-import { IsString, IsNumber, MinLength, IsNotEmpty, IsPositive } from 'class-validator';
+import { IsNotEmpty, IsString, IsNumber, IsPositive } from 'class-validator';
 
 export class TaxBracketDto {
   @IsNotEmpty()
@@ -9,5 +7,6 @@ export class TaxBracketDto {
 
   @IsNotEmpty()
   @IsNumber()
+  @IsPositive()
   rate: number;
 }
