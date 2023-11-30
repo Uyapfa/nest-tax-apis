@@ -10,8 +10,7 @@ async function bootstrap() {
       forbidNonWhitelisted: true,
     }),
   );
-  console.log({ secret: process.env.jwt_secret });
 
-  await app.listen(3001);
+  await app.listen(3000);
 }
 bootstrap();

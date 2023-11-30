@@ -1,5 +1,3 @@
-// src/taxbrackets/taxbrackets.entity.ts
-
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 import { UserTaxData } from '../entities/usertax-data.entity';
 
@@ -8,8 +6,8 @@ export class TaxBracket {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ unique: true, nullable: false })
-  name: string;
+  @Column({nullable: false })
+  incomeRange: string;
 
   @Column({ type: 'decimal', nullable: false })
   rate: number;

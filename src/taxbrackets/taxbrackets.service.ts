@@ -1,9 +1,8 @@
-// src/taxbrackets/taxbrackets.service.ts
-
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { TaxBracket } from '../entities/taxbrackets.entity';
+import { TaxBracketDto } from './dto/tax-bracket.dto';
 
 @Injectable()
 export class TaxBracketService {
@@ -16,7 +15,8 @@ export class TaxBracketService {
     return this.taxBracketRepository.find();
   }
 
-  async create(taxBracket: TaxBracket): Promise<TaxBracket> {
-    return this.taxBracketRepository.save(taxBracket);
+  async create(taxBracketDto: TaxBracketDto): Promise<TaxBracket> {
+    const newTaxBracket: TaxBracket = this.taxBracketRepository.create(taxBracketDto);
+    return this.taxBracketRepository.save(newTaxBracket);
   }
 }

@@ -1,9 +1,10 @@
-// src/usertax-data/usertax-data.service.ts
 
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { UserTaxData } from '../entities/usertax-data.entity';
+import { CreateUserTaxDataDto } from './dto/usertax-data.dto';
+import { User } from '../entities/user.entity'; 
 
 @Injectable()
 export class UserTaxDataService {
@@ -16,8 +17,14 @@ export class UserTaxDataService {
     return this.userTaxDataRepository.find();
   }
 
-  async create(userTaxData: UserTaxData): Promise<UserTaxData> {
+  async create(createUserTaxDataDto: CreateUserTaxDataDto): Promise<UserTaxData> {
+    const userTaxData = new UserTaxData();
+    userTaxData.income = createUserTaxDataDto.income;
+    userTaxData.calculatedTax = createUserTaxDataDto.calculatedTax;
+
+    
+    userTaxData.user = { id: createUserTaxDataDto.userId } as User; 
+
     return this.userTaxDataRepository.save(userTaxData);
   }
 }
-

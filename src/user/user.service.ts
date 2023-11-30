@@ -13,10 +13,6 @@ export class UserService {
     return await this.userRepo.findOne({ where: { id: id } });
   }
 
-  async findOneWithUserName(userName: string) {
-    return await this.userRepo.findOne({ where: { email: userName } });
-  }
-
   async create(createUserDto: CreateUserDto) {
     const user = await this.userRepo.create(createUserDto);
     await this.userRepo.save(user);
@@ -24,7 +20,5 @@ export class UserService {
     return result;
   }
 
-  async update(id: number, updateUserDto: UpdateUserDto) {
-    return await this.userRepo.update(id, updateUserDto);
-  }
+
 }
