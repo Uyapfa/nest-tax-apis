@@ -1,20 +1,36 @@
-
-import { Controller, Get, Post, Body } from '@nestjs/common';
+// usertax-data/usertax-data.controller.ts
+import { Controller, Get, Post, Body, Param, Put, Delete } from '@nestjs/common';
 import { UserTaxDataService } from './usertax-data.service';
 import { UserTaxData } from '../entities/usertax-data.entity';
-import { CreateUserTaxDataDto } from './dto/usertax-data.dto';
+import { CreateUserTaxDataDto } from './dto/CreateUsertax-data.Dto';
+import { UpdateUserTaxDataDto } from './dto/UpdateUserTaxDataDto';
 
 @Controller('usertax-data')
 export class UserTaxDataController {
   constructor(private readonly userTaxDataService: UserTaxDataService) {}
 
-  @Get("get")
+  @Get('get/all')
   findAll(): Promise<UserTaxData[]> {
     return this.userTaxDataService.findAll();
   }
 
-  @Post("add")
+  @Get('get/by/id/:id')
+  findById(@Param('id') id: number): Promise<UserTaxData | undefined> {
+    return this.userTaxDataService.findById(id);
+  }
+
+  @Post('add')
   create(@Body() createUserTaxDataDto: CreateUserTaxDataDto): Promise<UserTaxData> {
     return this.userTaxDataService.create(createUserTaxDataDto);
+  }
+
+  @Put('update/by/id/:id')
+  updateById(@Param('id') id: number, @Body() updateUserTaxDataDto: UpdateUserTaxDataDto): Promise<UserTaxData | undefined> {
+    return this.userTaxDataService.updateById(id, updateUserTaxDataDto);
+  }
+
+  @Delete('delete/by/id/:id')
+  deleteById(@Param('id') id: number): Promise<void> {
+    return this.userTaxDataService.deleteById(id);
   }
 }

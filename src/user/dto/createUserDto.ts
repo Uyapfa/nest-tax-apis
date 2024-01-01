@@ -9,7 +9,7 @@ export class CreateUserDto {
   surName: string;
 
   @IsNumberString()
-  idNumber: string
+  idNumber: string;
 
   @IsEmail()
   email: string;
@@ -17,5 +17,3 @@ export class CreateUserDto {
   @IsString()
   password: string;
 }
-
-export class UpdateUserDto extends PartialType(CreateUserDto) {}

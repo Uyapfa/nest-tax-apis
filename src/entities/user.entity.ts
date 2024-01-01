@@ -10,9 +10,9 @@ import { UserTaxData } from '../entities/usertax-data.entity';
 export class User {
   @PrimaryGeneratedColumn()
   id: number;
-   
+
   @Column()
-  idNumber: string
+  idNumber: string;
 
   @Column()
   name: string;
@@ -26,6 +26,6 @@ export class User {
   @Column()
   password: string;
 
-  @OneToMany(() => UserTaxData, (userTaxData) => userTaxData.user)
+  @OneToMany(() => UserTaxData, (userTaxData) => userTaxData.user, { cascade: true, onDelete: 'CASCADE' })
   userTaxData: UserTaxData[];
 }
