@@ -2,7 +2,6 @@ import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
 import { User } from '../entities/user.entity';
 import { TaxBracket } from '../entities/taxbrackets.entity';
 
-
 @Entity()
 export class UserTaxData {
   @PrimaryGeneratedColumn()

@@ -23,13 +23,13 @@ export class UserTaxDataController {
     return this.userTaxDataService.create(createUserTaxDataDto);
   }
 
-  @Put('update/by/id/:id')
+  @Put('/updateby/id/:id')
   updateById(@Param('id') id: number, @Body() updateUserTaxDataDto: UpdateUserTaxDataDto): Promise<UserTaxData | undefined> {
     return this.userTaxDataService.updateById(id, updateUserTaxDataDto);
   }
 
   @Delete('delete/by/id/:id')
-  deleteById(@Param('id') id: number): Promise<void> {
-    return this.userTaxDataService.deleteById(id);
-  }
+async deleteById(@Param('id') id: number): Promise<{ message: string }> {
+  return this.userTaxDataService.deleteById(id);
+}
 }
